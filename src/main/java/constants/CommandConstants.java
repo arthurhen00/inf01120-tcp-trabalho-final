@@ -1,9 +1,17 @@
 package constants;
 
 public class CommandConstants {
-    public static final String INCREASE_OCTAVE = "Z";
-    public static final String DECREASE_OCTAVE = "Q";
-    public static final String CHOICE_NOTE = "K";
-    public static final String CHANGE_INSTRUMENT = "L";
-    public static final String INCREASE_BPM = "P";
+    public static final String INCREASE_OCTAVE = "z";
+    public static final String DECREASE_OCTAVE = "q";
+    public static final String CHOICE_NOTE = "k";
+    public static final String CHANGE_INSTRUMENT = "l";
+    public static final String INCREASE_BPM = "p";
+    public static final String START_FUNCTION = ":CON(";
+    public static final String END_FUNCTION = ")";
+    public static final String CHANGE_VOLUME_FUNCTION = "7";
+    public static final String CHANGE_BPM_FUNCTION = "T";
+    public static final String INCREASE_VOLUME = "+";
+    public static final String DEFAULT_VOLUME = "-";
+    public static final String RANDOM_NOTE = "?";
+    public static final String RANDOM_BPM = ";";
 }

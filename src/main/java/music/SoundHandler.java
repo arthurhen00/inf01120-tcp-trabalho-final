@@ -11,13 +11,16 @@ import java.util.Random;
 public class SoundHandler {
 
     private int bpm;
-    private float volume;
+    private int volume;
     private int octave;
-    private Map<Character, Integer> notesMap;
+    public Map<Character, Integer> notesMap;
     private Map<Integer, String> instrumentMap;
 
-    private static final int INITIAL_BPM = 80;
-    private static final float INITIAL_VOLUME = 1;
+    private static final int INITIAL_BPM = 120;
+    private static final int MIN_BPM = 20;
+    private static final int MAX_BPM = 250;
+    private static final int INITIAL_VOLUME = 63;
+    private static final float MAX_VOLUME = 127;
     private static final int INITIAL_OCTAVE = 5;
 
     public SoundHandler(){
@@ -47,15 +50,40 @@ public class SoundHandler {
         this.instrumentMap.put(3, "I[Celesta]");
     }
 
+    public String convertText(String inputMusicText){
+
+        inputMusicText = inputMusicText.toUpperCase();
+
+        inputMusicText = inputMusicText.replaceAll("[IOU]", CommandConstants.CHOICE_NOTE);
+        inputMusicText = inputMusicText.replace("R+", CommandConstants.INCREASE_OCTAVE);
+        inputMusicText = inputMusicText.replace("R-", CommandConstants.DECREASE_OCTAVE);
+        inputMusicText = inputMusicText.replace("NL", CommandConstants.CHANGE_INSTRUMENT);
+        inputMusicText = inputMusicText.replace("BPM+", CommandConstants.INCREASE_BPM);
+
+        return inputMusicText;
+    }
+
     public String translateText(String inputMusicText){
 
+        String convetedText = inputMusicText;//convertText(inputMusicText);
         ArrayList<String> processedText = new ArrayList<>();
         char lastKey = ' ';
 
-        for(char c : inputMusicText.toUpperCase().toCharArray()){
+        for(char c : convetedText.toCharArray()){
             if(notesMap.get(c) != null){
                 String note = Integer.toString((notesMap.get(c) + (this.octave * 12)));
                 processedText.add(note);
+            } else if(Character.toString(c).equals(CommandConstants.INCREASE_VOLUME)){
+                increaseVolume();
+                processedText.add(CommandConstants.START_FUNCTION + CommandConstants.CHANGE_VOLUME_FUNCTION + "," + this.volume + CommandConstants.END_FUNCTION);
+            } else if(Character.toString(c).equals(CommandConstants.DEFAULT_VOLUME)){
+                this.volume = INITIAL_VOLUME;
+                processedText.add(CommandConstants.START_FUNCTION + CommandConstants.CHANGE_VOLUME_FUNCTION + "," + INITIAL_VOLUME + CommandConstants.END_FUNCTION);
+            } else if(Character.toString(c).equals(CommandConstants.RANDOM_NOTE)){
+                processedText.add(Integer.toString(notesMap.get(TextConstants.NOTES.charAt(new Random().nextInt(TextConstants.NOTES.length()))) + (this.octave * 12)));
+            } else if(Character.toString(c).equals(CommandConstants.RANDOM_BPM)){
+                randomBPM();
+                processedText.add(CommandConstants.CHANGE_BPM_FUNCTION + this.bpm);
             } else if(Character.toString(c).equals(CommandConstants.INCREASE_OCTAVE)){
                 increaseOctave();
             } else if(Character.toString(c).equals(CommandConstants.DECREASE_OCTAVE)){
@@ -64,6 +92,7 @@ public class SoundHandler {
                 processedText.add(instrumentMap.get(new Random().nextInt(instrumentMap.size())));
             } else if(Character.toString(c).equals(CommandConstants.INCREASE_BPM)){
                 increaseBPM();
+                processedText.add(CommandConstants.CHANGE_BPM_FUNCTION + this.bpm);
             } else if(Character.toString(c).equals(CommandConstants.CHOICE_NOTE)){
                 if(notesMap.get(lastKey) != null){
                     processedText.add(Integer.toString((notesMap.get(lastKey) + (this.octave * 12))));
@@ -84,14 +113,10 @@ public class SoundHandler {
         return finalText;
     }
 
-    public String convertText(String inputMusicText){
-        inputMusicText = inputMusicText.replaceAll("[iouIOU]", CommandConstants.CHOICE_NOTE);
-        inputMusicText = inputMusicText.replace("R+", CommandConstants.INCREASE_OCTAVE);
-        inputMusicText = inputMusicText.replace("R-", CommandConstants.DECREASE_OCTAVE);
-        inputMusicText = inputMusicText.replace("NL", CommandConstants.CHANGE_INSTRUMENT);
-        inputMusicText = inputMusicText.replace("BPM+", CommandConstants.INCREASE_BPM);
-
-        return inputMusicText;
+    private void increaseVolume(){
+        if(this.volume * 2 <= MAX_VOLUME){
+            this.volume *= 2;
+        }
     }
 
     private void increaseOctave(){
@@ -112,6 +137,10 @@ public class SoundHandler {
         } else {
             this.bpm += 80;
         }
+    }
+
+    private void randomBPM(){
+        this.bpm = new Random().nextInt((MAX_BPM - MIN_BPM) + 1) + MIN_BPM;
     }
 
 }

@@ -1,3 +1,4 @@
+import constants.TextConstants;
 import music.SoundHandler;
 import org.jfugue.pattern.Pattern;
 import org.jfugue.player.Player;
@@ -6,17 +7,17 @@ import org.junit.Test;
 import java.util.Random;
 
 public class SoundHandlerTest {
-    //java.lang.ClassCastException: java.lang.Integer cannot be cast to java.lang.Byte
+
     @Test
     public void a(){
         SoundHandler sh = new SoundHandler();
 
-        String input = "CDEFGABR+NLCDEFGABR+NLCDEFGABR+NLCDEFGAB";
+        String input = "cdefgabr+NLCDEFGABR+NLCDEFGABR+NLCDEFGAB";
 
-        String pText = sh.convertText(input);
-        System.out.println(pText);
+        String cText = sh.convertText(input);
+        System.out.println(cText);
 
-        String fText = sh.translateText(pText);
+        String fText = sh.translateText(cText);
         System.out.println(fText);
 
         Player player = new Player();
