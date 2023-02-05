@@ -14,10 +14,10 @@ public class SoundHandlerTest {
 
         String input = "cdefgabr+NLCDEFGABR+NLCDEFGABR+NLCDEFGAB";
 
-        String cText = sh.convertText(input);
-        System.out.println(cText);
+        //String cText = sh.convertText(input);
+        //System.out.println(cText);
 
-        String fText = sh.translateText(cText);
+        String fText = sh.translateText(input);
         System.out.println(fText);
 
         Player player = new Player();
