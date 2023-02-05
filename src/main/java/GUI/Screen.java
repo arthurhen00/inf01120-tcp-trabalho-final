@@ -1,5 +1,6 @@
 package GUI;
 
+import music.CreateMusic;
 import music.MusicPlayer;
 import music.SoundHandler;
 
@@ -36,7 +37,7 @@ public class Screen extends JFrame {
     }
 
     public void actionGenerateMusic(ActionEvent e) {
-        new MusicPlayer().play(new SoundHandler().translateText(inputTextArea.getText()));
+        new MusicPlayer().play(new CreateMusic(inputTextArea.getText()).finalMusicText);
     }
 
 
