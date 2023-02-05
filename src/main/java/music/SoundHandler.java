@@ -53,9 +53,7 @@ public class SoundHandler {
     }
 
     private String convertText(String inputMusicText){
-
         inputMusicText = inputMusicText.toUpperCase();
-
         inputMusicText = inputMusicText.replaceAll("[IOU]", CommandConstants.CHOICE_NOTE);
         inputMusicText = inputMusicText.replace("R+", CommandConstants.INCREASE_OCTAVE);
         inputMusicText = inputMusicText.replace("R-", CommandConstants.DECREASE_OCTAVE);
@@ -66,7 +64,6 @@ public class SoundHandler {
     }
 
     public String translateText(String inputMusicText){
-
         String convetedText = convertText(inputMusicText);
         ArrayList<String> processedText = new ArrayList<>();
         char lastKey = ' ';

@@ -1,13 +1,0 @@
-
-2
-java:S1643p"Use a StringBuilder instead.(¹àı¬
-o
-java:S1104"TMake notesMap a static final constant or non-public and provide accessors if needed.(®Æöøÿÿÿÿ
-m
-java:S3776D"RRefactor this method to reduce its Cognitive Complexity from 18 to the 15 allowed.(ŒšÏÃùÿÿÿÿ
-5
-java:S2119"Save and re-use this "Random".(îõÙ½
-5
-java:S2119…"Save and re-use this "Random".(­•…
-:
-java:S2119"Save and re-use this "Random".(ä¾¤ÿÿÿÿÿ

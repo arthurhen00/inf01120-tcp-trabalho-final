@@ -1,10 +1,6 @@
-import constants.TextConstants;
+import music.MusicPlayer;
 import music.SoundHandler;
-import org.jfugue.pattern.Pattern;
-import org.jfugue.player.Player;
 import org.junit.Test;
-
-import java.util.Random;
 
 public class SoundHandlerTest {
 
@@ -20,9 +16,8 @@ public class SoundHandlerTest {
         String fText = sh.translateText(input);
         System.out.println(fText);
 
-        Player player = new Player();
-        Pattern pattern1 = new Pattern(fText);
-        player.play(pattern1);
+        MusicPlayer ms = new MusicPlayer();
+        ms.play(fText);
 
     }
 
