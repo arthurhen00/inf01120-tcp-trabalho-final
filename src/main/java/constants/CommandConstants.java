@@ -1,6 +1,6 @@
 package constants;
 
-public class CommandConstants {
+public final class CommandConstants {
     public static final String INCREASE_OCTAVE = "z";
     public static final String DECREASE_OCTAVE = "q";
     public static final String CHOICE_NOTE = "k";
