@@ -109,9 +109,9 @@ public class MusicTextManipulator {
         processedText.add(Integer.toString(notesMap.get(TextConstants.NOTES.charAt(new Random().nextInt(TextConstants.NOTES.length()))) + (this.octave * 12)));
     }
 
-    private void getRandomInstrument(){
+    /*private void getRandomInstrument(){
         processedText.add(instrumentMap.get(new Random().nextInt(instrumentMap.size())));
-    }
+    }*/
 
     private void increaseOctave(){
         if(this.octave < MAX_OCTAVE){
