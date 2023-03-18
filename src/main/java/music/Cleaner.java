@@ -5,9 +5,12 @@ import constants.CommandConstants;
 public class Cleaner {
     private String finalMusicText;
 
+    public Cleaner(){
+        
+    }
+    
     public Cleaner(String inputMusicText){
-        MusicTextManipulator mtm = new MusicTextManipulator();
-        this.finalMusicText = mtm.translateText(getCleanText(inputMusicText));
+        setFinalMusicText(inputMusicText);
     }
 
     private String getCleanText(String inputMusicText){
@@ -23,5 +26,10 @@ public class Cleaner {
 
     public String getFinalMusicText() {
         return finalMusicText;
+    }
+    
+    public void setFinalMusicText(String finalMusicText) {
+        String cleanText = getCleanText(finalMusicText);
+        this.finalMusicText = cleanText;
     }
 }

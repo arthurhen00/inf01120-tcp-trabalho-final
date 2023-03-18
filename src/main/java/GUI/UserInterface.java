@@ -3,6 +3,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package GUI;
+import java.io.File;
+import music.Cleaner;
+import music.MusicTextManipulator;
+import music.MusicPlayer;
 
 /**
  *
@@ -10,6 +14,10 @@ package GUI;
  */
 public class UserInterface extends javax.swing.JFrame {
 
+    Cleaner cleaner = new Cleaner();
+    MusicTextManipulator mtm = new MusicTextManipulator();
+    MusicPlayer musicPlayer = new MusicPlayer();
+    
     /**
      * Creates new form NewJFrame
      */
@@ -101,10 +109,16 @@ public class UserInterface extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        cleaner.setFinalMusicText(jTextArea1.getText());
+        String musicText = mtm.translateText(cleaner.getFinalMusicText());
+        musicPlayer.play(musicText);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         // TODO add your handling code here:
+        javax.swing.JFileChooser fileChooser = new javax.swing.JFileChooser();
+        
+        File selectedFile = fileChooser.getSelectedFile();
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed

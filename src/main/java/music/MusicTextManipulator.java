@@ -69,7 +69,6 @@ public class MusicTextManipulator {
         commandMap.put(CommandConstants.RANDOM_BPM, this::randomBPM);
         commandMap.put(CommandConstants.INCREASE_OCTAVE, this::increaseOctave);
         commandMap.put(CommandConstants.DECREASE_OCTAVE, this::decreaseOctave);
-        commandMap.put(CommandConstants.CHANGE_INSTRUMENT, this::getRandomInstrument);
         commandMap.put(CommandConstants.CHOICE_NOTE, this::choiceNote);
     }
 
