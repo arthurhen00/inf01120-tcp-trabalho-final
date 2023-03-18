@@ -4,9 +4,12 @@
  */
 package GUI;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
 import music.Cleaner;
 import music.MusicTextManipulator;
 import music.MusicPlayer;
+
 
 /**
  *
@@ -116,7 +119,20 @@ public class UserInterface extends javax.swing.JFrame {
         
         File selectedFile = fileChooser.getSelectedFile();
         
-        //ler do arquivo
+        try {
+            File myObj = new File("filename.txt");
+            Scanner myReader = new Scanner(myObj);
+            String text = "";
+            while (myReader.hasNextLine()) {
+                String data = myReader.nextLine();
+                text += "data\n";
+            }
+            jTextArea1.setText(text);
+            myReader.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
