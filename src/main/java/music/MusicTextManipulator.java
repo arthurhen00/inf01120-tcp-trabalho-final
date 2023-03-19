@@ -128,14 +128,11 @@ public class MusicTextManipulator {
     private void increaseOctave(){
         if(this.octave < MAX_OCTAVE){
             this.octave++;
+        } else {
+            this.octive = INITIAL_OCTAVE
         }
     }
 
-    private void decreaseOctave(){
-        if(this.octave > MIN_OCTAVE){
-            this.octave--;
-        }
-    }
 
     private void choiceNote(){
         if(notesMap.get(lastKey) != null){
