@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package GUI;
+package gui;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
@@ -48,6 +48,9 @@ public class UserInterface extends javax.swing.JFrame {
         jMenuItem2 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        setResizable(false);
+        setLocationRelativeTo(null);
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
@@ -124,17 +127,17 @@ public class UserInterface extends javax.swing.JFrame {
         try {
             File myObj = new File("filename.txt");
             Scanner myReader = new Scanner(myObj);
-            String text = "";
+            StringBuilder text = new StringBuilder();
             while (myReader.hasNextLine()) {
                 String data = myReader.nextLine();
-                text += "data\n";
+                text.append(data).append("\n");
             }
-            jTextArea1.setText(text);
+            jTextArea1.setText(text.toString());
             myReader.close();
         } catch (FileNotFoundException e) {
             System.out.println("An error occurred.");
             e.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Arquivo não encontrado", "Erro", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Arquivo não encontrado!", "Erro", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
@@ -142,9 +145,8 @@ public class UserInterface extends javax.swing.JFrame {
         // TODO add your handling code here:
         try{
         musicPlayer.generateMidi();
-
         }catch (Exception exception) {
-            JOptionPane.showMessageDialog(null, "Arquivo não encontrado", "Erro", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Não há audio para salvar!", "Erro", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
