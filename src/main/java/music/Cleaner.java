@@ -1,12 +1,13 @@
 package music;
 
-import constants.CommandConstants;
 
 public class Cleaner {
     private String finalMusicText;
 
     public Cleaner(){
-        
+        // iniciar
+        // volume
+        // instrumento
     }
     
     public Cleaner(String inputMusicText){
@@ -14,7 +15,7 @@ public class Cleaner {
     }
 
     private String getCleanText(String inputMusicText){
-        inputMusicText = inputMusicText.replaceAll("[IiOoUu]", "I");
+        inputMusicText = inputMusicText.replaceAll("[IiOoUu]", "i");
         return inputMusicText;
     }
 
@@ -23,7 +24,6 @@ public class Cleaner {
     }
     
     public void setFinalMusicText(String inputMusicText) {
-        String cleanText = getCleanText(inputMusicText);
-        this.finalMusicText = cleanText;
+        this.finalMusicText = getCleanText(inputMusicText);
     }
 }

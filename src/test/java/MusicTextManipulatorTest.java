@@ -9,7 +9,7 @@ public class MusicTextManipulatorTest {
 
     @Test
     public void a(){
-        String inputMusicText = "cdefgab CDEFGAB!C";
+        String inputMusicText = "cdefgabCDEFGABc!a";
         MusicTextManipulator mtm = new MusicTextManipulator();
         Cleaner cleaner = new Cleaner();
         cleaner.setFinalMusicText(inputMusicText);
@@ -20,9 +20,9 @@ public class MusicTextManipulatorTest {
         System.out.println(teste0);
         System.out.println(teste1);
 
-        //Player player = new Player();
-        //Pattern pattern = new Pattern(inputMusicText);
-        //player.play(pattern);
+        Player player = new Player();
+        Pattern pattern = new Pattern(teste1);
+        player.play(pattern);
 
     }
 
