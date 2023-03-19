@@ -116,12 +116,6 @@ public class MusicTextManipulator {
         if(this.octave < MAX_OCTAVE){
             this.octave++;
         } else {
-            this.octive = INITIAL_OCTAVE
-        }
-    }
-
-
-    private void choiceNote(){
             this.octave = INITIAL_OCTAVE;
         }
     }

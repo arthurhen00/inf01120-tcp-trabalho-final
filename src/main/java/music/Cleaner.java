@@ -26,8 +26,4 @@ public class Cleaner {
         String cleanText = getCleanText(finalMusicText);
         this.finalMusicText = cleanText;
     }
-    
-    public void setFinalMusicText(String inputMusicText) {
-        this.finalMusicText = getCleanText(inputMusicText);
-    }
 }
