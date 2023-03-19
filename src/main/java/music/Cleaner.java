@@ -1,6 +1,5 @@
 package music;
 
-import constants.CommandConstants;
 
 public class Cleaner {
     private String finalMusicText;
@@ -25,7 +24,6 @@ public class Cleaner {
     }
     
     public void setFinalMusicText(String inputMusicText) {
-        String cleanText = getCleanText(inputMusicText);
-        this.finalMusicText = cleanText;
+        this.finalMusicText = getCleanText(inputMusicText);
     }
 }

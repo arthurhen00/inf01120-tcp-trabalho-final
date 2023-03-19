@@ -7,34 +7,27 @@ import constants.TextConstants;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Random;
 
 public class MusicTextManipulator {
 
-    private int bpm;
     private int volume;
     private int octave;
     private int instrument;
-    private Map<Character, Integer> notesMap;
-    private Map<String, Integer> instrumentMap;
+    private final Map<Character, Integer> notesMap;
+    private final Map<String, Integer> instrumentMap;
 
-    private Map<String, Runnable> commandMap;
-    private ArrayList<String> processedText = new ArrayList<>();
+    private final Map<String, Runnable> commandMap;
+    private final ArrayList<String> processedText = new ArrayList<>();
     private char lastKey = ' ';
-     // piano default
 
     private static final int INITIAL_INSTRUMENT = 0;
-    private static final int INITIAL_BPM = 120;
-    private static final int MAX_BPM = 250;
-    private static final int MIN_BPM = 20;
+
     private static final int INITIAL_VOLUME = 63;
     private static final float MAX_VOLUME = 127;
     private static final int INITIAL_OCTAVE = 5;
     private static final int MAX_OCTAVE = 9;
-    private static final int MIN_OCTAVE = 0;
 
     public MusicTextManipulator(){
-        this.bpm = INITIAL_BPM;
         this.volume = INITIAL_VOLUME;
         this.octave = INITIAL_OCTAVE;
         this.instrument = INITIAL_INSTRUMENT;
@@ -75,12 +68,12 @@ public class MusicTextManipulator {
 
     public String translateText(String clearedMusicText){
         for(char c : clearedMusicText.toCharArray()){
-            Boolean isNumber = false;
+            boolean isNumber = false;
             int number = 0;
             try{
                 number = Integer.parseInt(Character.toString(c));
                 isNumber = true;
-            }catch (Exception ex){
+            }catch (Exception ignored){
 
             }
             if(notesMap.get(c) != null){
@@ -89,12 +82,11 @@ public class MusicTextManipulator {
                 commandMap.get(Character.toString(c)).run();
             } else if (instrumentMap.get(Character.toString(c)) != null){
                 this.instrument = instrumentMap.get(Character.toString(c));
-                processedText.add(CommandConstants.CHANGE_INSTRUMENT_FUNCTION + Integer.toString(instrumentMap.get(Character.toString(c))));
+                processedText.add(CommandConstants.CHANGE_INSTRUMENT_FUNCTION + instrumentMap.get(Character.toString(c)));
             } else if(isNumber){
                 this.instrument += number;
                 this.instrument %= 128;
-                System.out.println(this.instrument);
-                processedText.add(CommandConstants.CHANGE_INSTRUMENT_FUNCTION + Integer.toString(this.instrument));
+                processedText.add(CommandConstants.CHANGE_INSTRUMENT_FUNCTION + this.instrument);
             } else {
                 ultimaNota();
             }
@@ -102,12 +94,12 @@ public class MusicTextManipulator {
             this.lastKey = c;
         }
 
-        String finalText = "";
+        StringBuilder finalText = new StringBuilder();
         for(String commands : processedText){
-            finalText += commands + TextConstants.EMPTY_SPACE;
+            finalText.append(commands).append(TextConstants.EMPTY_SPACE);
         }
 
-        return finalText;
+        return finalText.toString();
     }
 
     private void changeVolume(){
