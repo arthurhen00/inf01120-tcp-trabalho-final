@@ -6,7 +6,9 @@ public class Cleaner {
     private String finalMusicText;
 
     public Cleaner(){
-        
+        // iniciar
+        // volume
+        // instrumento
     }
     
     public Cleaner(String inputMusicText){
@@ -14,7 +16,7 @@ public class Cleaner {
     }
 
     private String getCleanText(String inputMusicText){
-        inputMusicText = inputMusicText.replaceAll("[IiOoUu]", "I");
+        inputMusicText = inputMusicText.replaceAll("[IiOoUu]", "i");
         return inputMusicText;
     }
 
