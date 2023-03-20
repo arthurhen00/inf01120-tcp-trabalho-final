@@ -127,7 +127,7 @@ public class MusicTextManipulator {
             processedText.add(Integer.toString((notesMap.get(lastKey) + (this.octave * 12))));
         } else {
             // silencio ou pausa
-            processedText.add("125");
+            processedText.add(CommandConstants.PAUSE);
         }
     }
 

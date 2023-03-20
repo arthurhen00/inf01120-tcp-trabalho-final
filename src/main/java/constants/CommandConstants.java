@@ -13,4 +13,5 @@ public final class CommandConstants {
     public static final String INSTRUMENT_CHORD_ORGAN = ",";
     public static final String CHANGE_VOLUME = " ";
     public static final String CHANGE_OCTAVE = "?";
+    public static final String PAUSE = "R";
 }
