@@ -2,7 +2,7 @@ package constants;
 
 public final class CommandConstants {
 
-    public static final String CHANGE_VOLUME_FUNCTION = ":CON(I";
+    public static final String CHANGE_VOLUME_FUNCTION = ":CON(7";
     public static final String END_FUNCTION = ")";
     public static final String CHANGE_INSTRUMENT_FUNCTION = "I";
 

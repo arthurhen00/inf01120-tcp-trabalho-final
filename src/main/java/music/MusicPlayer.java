@@ -29,7 +29,7 @@ public class MusicPlayer {
         try{
             org.jfugue.midi.MidiFileManager.savePatternToMidi(pattern, file);
         }catch (IOException ignored){
-    
+
         }
     }
 }

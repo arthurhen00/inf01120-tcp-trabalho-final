@@ -96,6 +96,10 @@ public class MusicTextManipulator {
             finalText.append(commands).append(TextConstants.EMPTY_SPACE);
         }
 
+        this.volume = INITIAL_VOLUME;
+        this.octave = INITIAL_OCTAVE;
+        this.instrument = INITIAL_INSTRUMENT;
+
         return finalText.toString();
     }
 

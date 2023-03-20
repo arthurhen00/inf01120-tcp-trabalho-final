@@ -9,7 +9,7 @@ public class MusicTextManipulatorTest {
 
     @Test
     public void a(){
-        String inputMusicText = "cdefgabCDEFGABc!a";
+        String inputMusicText = "C C C";
         MusicTextManipulator mtm = new MusicTextManipulator();
         Cleaner cleaner = new Cleaner();
         cleaner.setFinalMusicText(inputMusicText);
