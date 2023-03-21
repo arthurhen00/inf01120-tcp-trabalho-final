@@ -144,9 +144,10 @@ public class UserInterface extends javax.swing.JFrame {
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         // TODO add your handling code here:
         try{
-        musicPlayer.generateMidi();
+            musicPlayer.generateMidi();
+            JOptionPane.showMessageDialog(null, "Áudio salvo!", "Erro", JOptionPane.INFORMATION_MESSAGE);
         }catch (Exception exception) {
-            JOptionPane.showMessageDialog(null, "Não há audio para salvar!", "Erro", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Não há áudio para salvar!", "Erro", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
